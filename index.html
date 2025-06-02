@@ -1,62 +1,373 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
+
+<!-- Basic Page Needs––––––––––––––––––––––––––– -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>墨水水面效果</title>
+    <meta http-equiv="content-type" content="text/html">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--SEO meta tags-->
+    <meta name="description" content="ShanghaiTech DataTech Club">
+    <meta name="keywords" content="DataTech, ShanghaiTech, Shanghai Tech University, Data Science, Technology">
+    <meta name="author" content="DataTech">
+    <!--    Change the index to your website's name-->
+    <title>ShanghaiTech DataTech</title>
+    <!-- Bootstrap Core CSS ––––––––––––––––––––––––––– -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- fontawesome ––––––––––––––––––––––––––– -->
+    <script src="https://kit.fontawesome.com/5c9f2dfb26.js"></script>
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Custom Fonts -->
+    <link href="css/webfontkit-20210922-213723/stylesheet.css" rel="stylesheet">
+    <!-- To add a google font and paste the link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap" rel="stylesheet">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <style>
+        /* Global Styles */
         body {
             margin: 0;
             padding: 0;
-            background: #f0f0f0; /* 更改背景色，增加与水面的对比度 */
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+            background: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
         
-        #container {
+        p {
+            margin-bottom: 1.3rem;
+            font-family: nexa_regularregular;
+            color: #E8E8E8;
+            font-size: 1rem;
+        }
+        
+        h2 {
+            font-family: 'Exo 2', sans-serif;
+            margin: 1.414rem 0 0.5rem 0;
+            font-size: 2.369rem;
+            color: #E8E8E8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+        
+        /* Navbar */
+        #navbar {
+            background-color: rgba(35, 35, 35, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-link {
+            font-family: nexa_xboldregular;
+            text-transform: uppercase;
+            letter-spacing: 4pt;
+            padding-left: 2vw !important;
+            padding-right: 2vw !important;
+            color: #d8d8d8 !important;
+        }
+        
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+        
+        /* Home Section with Ink Effect */
+        #homeWrapper {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #inkCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100vw;
             height: 100vh;
+            z-index: 1;
+            cursor: crosshair;
+            pointer-events: auto;
         }
         
-        .info {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #666;
-            font-size: 14px;
+        #homeContainer {
+            position: relative;
             z-index: 10;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             pointer-events: none;
+        }
+        
+        #homeContainer .col-8 {
+            pointer-events: auto;
+        }
+        
+        #homeContainer .btn {
+            pointer-events: auto;
+        }
+        
+        .lead {
+            font-family: nexa_regularregular;
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #E8E8E8;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        .btn {
+            font-family: nexa_regularregular;
+            font-weight: bold;
+            border-width: 2px;
+        }
+        
+        /* About Section */
+        #aboutWrapper {
+            background-color: rgba(35, 35, 35, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 80px 0;
+            position: relative;
+            z-index: 5;
+            pointer-events: auto;
+        }
+        
+        /* Resources Section */
+        #resourcesWrapper {
+            background-color: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 80px 0;
+            position: relative;
+            z-index: 5;
+            pointer-events: auto;
+        }
+        
+        /* Contact Section */
+        #contactWrapper {
+            background-color: rgba(35, 35, 35, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 80px 0;
+            position: relative;
+            z-index: 5;
+            pointer-events: auto;
+        }
+        
+        .footer {
+            padding: 2rem 0;
+        }
+        
+        .footer .social ul li {
+            display: inline-block;
+        }
+        
+        .footer .social ul li a {
+            display: inline-block;
+            padding: 10px;
+            font-size: 2rem;
+            color: #E8E8E8;
+        }
+        
+        .footer .social ul li a:hover {
+            color: #ffffff;
+        }
+        
+        /* Logo Styles */
+        .datatech-logo {
+            font-family: single_fighterregular;
+            font-size: 4rem;
+            color: #E8E8E8;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            letter-spacing: 0.075em;
+        }
+        
+        @media (max-width: 768px) {
+            .datatech-logo {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="info">移动鼠标在水面上留下墨迹</div>
-    <div id="container"></div>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg">
+        <div class="container-fluid justify-content-lg-center" id="navbarContainer">
+            <div class="row justify-content-lg-center">
+                <div class="col-sm-1 col-lg-1">
+                    <a class="navbar-brand" href="#">
+                        <span class="fw-bold text-light" style="font-size: 1.5rem;">DataTech</span>
+                    </a>
+                </div>
+                <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center col-lg-auto" id="navbarToggler">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#resources">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section with Ink Effect -->
+    <div id="homeWrapper" class="position-relative overflow-hidden text-center">
+        <canvas id="inkCanvas"></canvas>
+        <div class="container" id="homeContainer">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 156" style="max-width: 100%; height: auto;">
+                            <defs>
+                                <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.8)"/>
+                                </filter>
+                            </defs>
+                            <text id="DataTech" data-name="DataTech" fill="#e8e8e8"
+                            font-size="85" font-family="single_fighterregular"
+                            letter-spacing="0.075em" filter="url(#textShadow)"><tspan x="50"
+                            y="124">D</tspan><tspan y="124" font-size="75"
+                            letter-spacing="0.08em">a</tspan><tspan y="124"
+                            font-size="80" letter-spacing="0.05em">t</tspan><tspan
+                            y="124" font-size="75" letter-spacing="0.08em">a</tspan><tspan
+                            y="124" font-size="90" letter-spacing="0.1em">T</tspan><tspan
+                            y="124" font-size="75" letter-spacing="0.05em">e</tspan><tspan
+                            y="124" font-size="78" letter-spacing="0.05em">c</tspan><tspan
+                            y="124" font-size="82" letter-spacing="0.05em">h</tspan></text>
+                        </svg>
+                    </div>
+                    <p class="lead fw-normal">Exploring Data Science and Technology at ShanghaiTech University</p>
+                    <a class="btn btn-outline-light btn-lg" href="#about">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about"></div>
+    <div id="aboutWrapper" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 px-5">
+                    <h2>About DataTech</h2>
+                    <p>DataTech is a student organization at ShanghaiTech University dedicated to exploring the frontiers of data science and technology. We bring together passionate students who are interested in machine learning, artificial intelligence, data analysis, and cutting-edge technological innovations.</p>
+                    <p>Our mission is to foster a collaborative environment where students can learn, share knowledge, and work on exciting projects that push the boundaries of what's possible with data and technology.</p>
+                </div>
+                <div class="col-md-6 pt-5 ps-3">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="datatech-logo" style="font-size: 2.5rem; color: #4a90e2;">DataTech</div>
+                            <p class="mt-3">ShanghaiTech University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div id="resources"></div>
+    <div id="resourcesWrapper" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <h2>EXPLORE<br><span>OUR RESOURCES</span></h2>
+                </div>
+                <div class="col-6"></div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-light h-100">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-brain me-2"></i>Machine Learning</h5>
+                            <p class="card-text">Explore the latest in ML algorithms, deep learning frameworks, and AI applications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-light h-100">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-chart-bar me-2"></i>Data Analysis</h5>
+                            <p class="card-text">Learn data visualization, statistical analysis, and data-driven decision making.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark text-light h-100">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-code me-2"></i>Tech Innovation</h5>
+                            <p class="card-text">Discover emerging technologies and participate in innovative projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact"></div>
+    <div id="contactWrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2>Get In Touch</h2>
+                    <p>Interested in joining DataTech or collaborating with us? We'd love to hear from you!</p>
+                    <div class="footer">
+                        <div class="social">
+                            <ul class="list-unstyled d-flex justify-content-center">
+                                <li><a href="#"><i class="fab fa-github"></i></a></li>
+                                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    
     <script>
         // ==================== 效果参数配置 ====================
         const EFFECT_CONFIG = {
             // 水面基础参数
-            gridSize: 128,              // 水面网格大小
+            gridSize: 256,              // 水面网格大小
             waterSize: 10,              // 水面物理尺寸
             
             // 水波物理参数
-            dampening: 0.98,            // 水波阻尼系数
-            springConstant: 0.02,       // 弹簧常数
+            dampening: 0.95,            // 水波阻尼系数（降低阻尼增强水波强度）
+            springConstant: 0.035,      // 弹簧常数（增加弹性增强水波强度）
             
             // 鼠标交互参数
-            mouseTriggerThreshold: 0.001,   // 鼠标移动触发阈值
-            mouseIntensityMultiplier: 20,   // 鼠标强度倍数
-            minMouseIntensity: 5,           // 最小鼠标强度
-            maxMouseIntensity: 15,          // 最大鼠标强度（防止快速移动时墨点过大）
+            mouseTriggerThreshold: 0.0005,  // 鼠标移动触发阈值（降低阈值提高敏感度）
+            mouseIntensityMultiplier: 25,   // 鼠标强度倍数（增加强度）
+            minMouseIntensity: 6,           // 最小鼠标强度（提高最小强度）
+            maxMouseIntensity: 20,          // 最大鼠标强度（增加最大强度）
             
             // 轨迹插值参数
-            trailGapThreshold: 0.02,        // 轨迹间隙阈值
-            trailDensityMultiplier: 100,     // 轨迹密度倍数
-            trailMinSteps: 2,               // 轨迹最小步数
-            trailIntensityMultiplier: 20,   // 轨迹强度倍数
-            trailMinIntensity: 3,           // 轨迹最小强度
+            trailGapThreshold: 0.018,       // 轨迹间隙阈值（适当提高阈值减少计算量）
+            trailDensityMultiplier: 60,     // 轨迹密度倍数（降低密度减少卡顿）
+            trailMinSteps: 2,               // 轨迹最小步数（降低最小步数）
+            trailIntensityMultiplier: 22,   // 轨迹强度倍数（适当降低强度）
+            trailMinIntensity: 3,           // 轨迹最小强度（降低最小强度）
             
             // 墨水消失参数
             inkFadeTime: 300,          // 墨水完全消失时间（毫秒）- 加快消失速度
@@ -64,7 +375,7 @@
             inkMinThreshold: 0.01,      // 墨水最小阈值
             
             // 墨水扩散参数
-            inkDiffusionRate: 0.003,    // 墨水扩散速率
+            inkDiffusionRate: 0.006,    // 墨水扩散速率（增加扩散速率提高流动性）
             
             // 泼溅效果参数
             splashAngleSegments: 12,        // 泼溅角度分段数
@@ -88,7 +399,7 @@
             initialWaterColorR: 1.0,    // 初始水面颜色R
             initialWaterColorG: 1.0,   // 初始水面颜色G
             initialWaterColorB: 1.0,    // 初始水面颜色B
-            backgroundColor: 0x333333,  // 背景颜色
+            backgroundColor: 0xffffff,  // 背景颜色
             
             // 相机参数
             cameraFOV: 90,              // 相机视野角度（调整以让水面填满视野）
@@ -111,21 +422,21 @@
             // 物理参数
             waterDampening: 0.98,           // 水波阻尼
             waterSpringConstant: 0.02,      // 水波弹簧常数
-            minWaterHeight: -4.5,           // 最小水面高度
+            minWaterHeight: -1.5,           // 最小水面高度
             maxWaterHeight: 0.5,            // 最大水面高度
             
             // 鼠标交互参数（更新）
-            maxTrailLength: 20,             // 最大轨迹长度
-            minMoveDistance: 0.001,         // 最小移动距离
-            intensityMultiplier: 30,        // 强度倍数
-            minIntensity: 5,                // 最小强度
+            maxTrailLength: 16,             // 最大轨迹长度（允许更长连续轨迹）
+            minMoveDistance: 0.001,         // 最小移动距离（减小让采样更密集，防止断点）
+            intensityMultiplier: 30,        // 强度倍数（适当降低强度）
+            minIntensity: 5,                // 最小强度（降低最小强度）
             
             // 轨迹填充参数（更新）
-            gapFillThreshold: 0.02,         // 间隙填充阈值
-            gapFillDensity: 50,             // 间隙填充密度
-            minGapFillSteps: 2,             // 最小间隙填充步数
-            gapFillIntensityMultiplier: 20, // 间隙填充强度倍数
-            minGapFillIntensity: 3,         // 最小间隙填充强度
+            gapFillThreshold: 0.018,        // 间隙填充阈值（适当提升，减少插值点数）
+            gapFillDensity: 22,              // 间隙填充密度（降低密度防止爆卡）
+            minGapFillSteps: 2,              // 最小间隙填充步数
+            gapFillIntensityMultiplier: 16, // 间隙填充强度倍数（降低强度防止爆卡）
+            minGapFillIntensity: 3,         // 最小间隙填充强度（降低最小强度）
             
             // 墨水半径参数
             radiusMultiplier: 0.2,          // 半径倍数
@@ -148,18 +459,19 @@
             
             // 墨水老化参数
             frameTime: 16,                  // 帧时间（毫秒）
-            inkDecayBase: 0.999,            // 墨水衰减基数
-            inkDecayRate: 0.002,            // 墨水衰减率
-            inkClearThreshold: 0.01,        // 墨水清除阈值
+            inkDecayBase: 0.998,            // 墨水衰减基数（略微加快稀释）
+            inkDecayRate: 0.003,            // 墨水衰减率（加快消散）
+            inkClearThreshold: 0.008,       // 墨水清除阈值（更早消失）
             
             // 墨水扩散参数（更新）
-            inkDiffusionRate: 0.003         // 墨水扩散率
+            inkDiffusionRate: 0.014,        // 墨水扩散率（进一步提升晕染速度）
+            inkDiffusionAnisotropy: 0.38,   // 墨水扩散各向异性（更快顺水流扩散）
         };
         // ==================== 效果参数配置结束 ====================
         
         class InkWaterEffect {
             constructor() {
-                this.container = document.getElementById('container');
+                this.canvas = document.getElementById('inkCanvas');
                 this.width = window.innerWidth;
                 this.height = window.innerHeight;
                 
@@ -202,13 +514,14 @@
                 this.initThree();
                 this.createWaterSurface();
                 this.bindEvents();
+                this.setupCardInteraction();
                 this.animate();
             }
             
             initThree() {
                 // 场景
                 this.scene = new THREE.Scene();
-                this.scene.background = new THREE.Color(EFFECT_CONFIG.backgroundColor);
+                this.scene.background = new THREE.Color(0x001122); // 深蓝色背景
                 
                 // 相机
                 this.camera = new THREE.PerspectiveCamera(
@@ -225,11 +538,16 @@
                 this.camera.lookAt(0, 0, 0);
                 
                 // 渲染器
-                this.renderer = new THREE.WebGLRenderer({ antialias: true });
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: this.canvas,
+                    antialias: true,
+                    alpha: true
+                });
                 this.renderer.setSize(this.width, this.height);
                 this.renderer.shadowMap.enabled = true;
                 this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-                this.container.appendChild(this.renderer.domElement);
+                // 使用深蓝色背景，更适合墨水效果
+                this.renderer.setClearColor(0xffffff, 1);
                 
                 // 光照
                 const ambientLight = new THREE.AmbientLight(0xffffff, EFFECT_CONFIG.ambientLightIntensity);
@@ -291,6 +609,8 @@
             bindEvents() {
                 // 添加鼠标进入和离开事件处理
                 let isMouseOverCanvas = false;
+                let lastProcessTime = 0;
+                const throttleDelay = 16; // 限制处理频率，约60fps（降低频率减少卡顿）
                 
                 this.renderer.domElement.addEventListener('mouseenter', () => {
                     isMouseOverCanvas = true;
@@ -305,6 +625,10 @@
                 });
                 
                 window.addEventListener('mousemove', (event) => {
+                    // 节流处理，避免过于频繁的更新
+                    const now = Date.now();
+                    if (now - lastProcessTime < throttleDelay) return;
+                    lastProcessTime = now;
                     // 只有鼠标在画布上时才处理
                     if (!isMouseOverCanvas) return;
                     
@@ -412,6 +736,122 @@
                 });
             }
             
+            // 设置卡片与水面的交互
+            setupCardInteraction() {
+                // 获取所有卡片元素
+                const cards = document.querySelectorAll('.card');
+                const resourcesSection = document.getElementById('resourcesWrapper');
+                
+                // 卡片位置数据
+                this.cardPositions = [];
+                
+                // 初始化卡片位置数据
+                cards.forEach(card => {
+                    this.cardPositions.push({
+                        element: card,
+                        x: 0,
+                        y: 0,
+                        prevY: 0,
+                        velocity: 0,
+                        lastUpdate: Date.now()
+                    });
+                    
+                    // 添加3D变换样式
+                    card.style.transition = 'transform 0.2s ease-out';
+                    card.style.transformStyle = 'preserve-3d';
+                    card.style.transform = 'translateZ(0)';
+                });
+                
+                // 监听滚动事件
+                window.addEventListener('scroll', () => {
+                    this.updateCardPositions();
+                });
+                
+                // 初始更新卡片位置
+                this.updateCardPositions();
+                
+                // 定期更新卡片与水面的交互
+                setInterval(() => {
+                    this.updateWaterInteraction();
+                }, 100);
+            }
+            
+            // 更新卡片位置
+            updateCardPositions() {
+                const now = Date.now();
+                
+                this.cardPositions.forEach(cardData => {
+                    const rect = cardData.element.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    // 计算卡片在水面坐标系中的位置
+                    const normalizedX = (centerX / window.innerWidth) * 2 - 1;
+                    const normalizedY = -(centerY / window.innerHeight) * 2 + 1;
+                    
+                    // 射线检测获取水面上的位置
+                    this.mouseVector.x = normalizedX;
+                    this.mouseVector.y = normalizedY;
+                    this.raycaster.setFromCamera(this.mouseVector, this.camera);
+                    const intersects = this.raycaster.intersectObject(this.waterMesh);
+                    
+                    if (intersects.length > 0) {
+                        const point = intersects[0].point;
+                        
+                        // 保存前一个位置
+                        cardData.prevY = cardData.y;
+                        
+                        // 更新卡片位置
+                        cardData.x = point.x;
+                        cardData.y = point.z;
+                        
+                        // 计算垂直速度
+                        const deltaTime = (now - cardData.lastUpdate) / 1000;
+                        if (deltaTime > 0) {
+                            cardData.velocity = (cardData.y - cardData.prevY) / deltaTime;
+                        }
+                        
+                        // 根据速度添加3D倾斜效果
+                        const tiltAmount = Math.min(Math.max(cardData.velocity * 10, -15), 15);
+                        cardData.element.style.transform = `translateZ(0) rotateX(${tiltAmount}deg)`;
+                        
+                        cardData.lastUpdate = now;
+                    }
+                });
+            }
+            
+            // 更新水面与卡片的交互
+            updateWaterInteraction() {
+                this.cardPositions.forEach(cardData => {
+                    // 只有当卡片在视口内且有一定速度时才产生水波
+                    const rect = cardData.element.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible && Math.abs(cardData.velocity) > 0.1) {
+                        // 根据速度计算强度
+                        const intensity = Math.min(Math.abs(cardData.velocity) * 20, 30);
+                        
+                        // 在卡片位置添加水波
+                        this.addWaveAndInk(cardData.x, cardData.y, intensity);
+                        
+                        // 在卡片周围添加多个水波点，模拟更大的影响区域
+                        const radius = Math.min(rect.width, rect.height) / 100;
+                        for (let i = 0; i < 5; i++) {
+                            const angle = Math.random() * Math.PI * 2;
+                            const distance = Math.random() * radius;
+                            const offsetX = Math.cos(angle) * distance;
+                            const offsetY = Math.sin(angle) * distance;
+                            
+                            this.addWaveAndInk(
+                                cardData.x + offsetX, 
+                                cardData.y + offsetY, 
+                                intensity * 0.7
+                            );
+                        }
+                    }
+                });
+            }
+            
             // 在两点之间填充墨水，确保连续性
             fillTrailGap(x1, y1, x2, y2) {
                 const distance = Math.sqrt(
@@ -514,7 +954,8 @@
                                 
                                 // 添加不规则的墨水浓度变化
                                 const noiseValue = Math.sin(i * 0.5) * Math.cos(j * 0.5) * 0.25 + 0.75;
-                                const inkAmount = (1 - normalizedDist) * 0.3 * noiseValue;
+                                // 晕染边缘更自然，中心浓度更高，边缘递减更缓慢
+                                const inkAmount = Math.pow(1 - normalizedDist, 1.5) * 0.23 * noiseValue;
                                 
                                 // 添加波浪力
                                 const force = (1 - normalizedDist) * intensity * 0.02 * noiseValue;
@@ -703,8 +1144,8 @@
                 }
                 
                 // 墨水扩散和水流推动
-                const diffusionRate = EFFECT_CONFIG.inkDiffusionRate;
-                const flowPushStrength = 0.15; // 水流推动强度
+                let diffusionRate = EFFECT_CONFIG.inkDiffusionRate;
+                const flowPushStrength = 0.35; // 水流推动强度（更强的流动性）
                 const newInkLevels = new Float32Array(this.waterData.inkLevels);
                 const newInkAge = new Float32Array(this.waterData.inkAge);
                 
@@ -737,8 +1178,13 @@
                             // 1. 普通扩散（浓度梯度驱动）
                             for (const neighborIndex of Object.values(neighbors)) {
                                 const neighborInk = this.waterData.inkLevels[neighborIndex];
+                                // 各向异性扩散：水流方向扩散更快
+                                let anisotropy = 1.0;
+                                if (neighborIndex === neighbors.left || neighborIndex === neighbors.right) {
+                                    anisotropy += EFFECT_CONFIG.inkDiffusionAnisotropy;
+                                }
                                 if (currentInk > neighborInk) {
-                                    const diff = (currentInk - neighborInk) * diffusionRate;
+                                    const diff = (currentInk - neighborInk) * diffusionRate * anisotropy;
                                     newInkLevels[index] -= diff;
                                     newInkLevels[neighborIndex] += diff;
                                     
@@ -843,10 +1289,17 @@
             animate() {
                 requestAnimationFrame(() => this.animate());
                 
-                this.updateWater();
-                this.updateGeometry();
+                // 帧率控制，限制为30fps（降低帧率减少卡顿）
+                const now = Date.now();
+                if (!this.lastFrameTime) this.lastFrameTime = now;
+                const deltaTime = now - this.lastFrameTime;
                 
-                this.renderer.render(this.scene, this.camera);
+                if (deltaTime >= 33.33) { // 约30fps
+                    this.updateWater();
+                    this.updateGeometry();
+                    this.renderer.render(this.scene, this.camera);
+                    this.lastFrameTime = now;
+                }
             }
         }
         
