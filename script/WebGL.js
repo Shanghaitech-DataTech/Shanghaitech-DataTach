@@ -1434,7 +1434,30 @@ function blur (target, temp, iterations) {
 function splatPointer (pointer) {
     let dx = pointer.deltaX * config.SPLAT_FORCE;
     let dy = pointer.deltaY * config.SPLAT_FORCE;
-    splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
+    let distance = Math.sqrt(pointer.deltaX * pointer.deltaX + pointer.deltaY * pointer.deltaY);
+    
+    // 设置splat间隔距离（可配置）
+    let splatInterval = 0.01; // 每0.5%的屏幕距离一个splat
+    
+    if (distance > splatInterval) {
+        // 计算需要的splat数量
+        let splatCount = Math.floor(distance / splatInterval);
+        
+        // 在路径上均匀分布splat
+        for (let i = 0; i <= splatCount; i++) {
+            let t = i / splatCount; // 插值参数 [0, 1]
+            
+            // 线性插值计算位置
+            let interpolatedX = pointer.prevTexcoordX + (pointer.texcoordX - pointer.prevTexcoordX) * t;
+            let interpolatedY = pointer.prevTexcoordY + (pointer.texcoordY - pointer.prevTexcoordY) * t;
+            
+            // 在插值位置创建splat
+            splat(interpolatedX, interpolatedY, dx, dy, pointer.color);
+        }
+    } else {
+        // 距离太小，只在当前位置创建一个splat
+        splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
+    }
 }
 
 function multipleSplats (amount) {
