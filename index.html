@@ -85,10 +85,10 @@
             splatterRandomFactorMax: 1.2,   // 飞溅随机因子最大值
             
             // 视觉效果参数
-            initialWaterColorR: 0.95,    // 初始水面颜色R
-            initialWaterColorG: 0.98,   // 初始水面颜色G
+            initialWaterColorR: 1.0,    // 初始水面颜色R
+            initialWaterColorG: 1.0,   // 初始水面颜色G
             initialWaterColorB: 1.0,    // 初始水面颜色B
-            backgroundColor: 0xf0f0f0,  // 背景颜色
+            backgroundColor: 0x333333,  // 背景颜色
             
             // 相机参数
             cameraFOV: 90,              // 相机视野角度（调整以让水面填满视野）
@@ -265,7 +265,7 @@
                     // 添加微小的随机波动
                     positions.setY(i, (Math.random() - 0.5) * 0.01);
                     
-                    // 初始颜色为浅蓝色，增加与背景的对比度
+                    // 初始颜色为白色，增加与背景的对比度
                     colors[i * 3] = EFFECT_CONFIG.initialWaterColorR;     // R
                     colors[i * 3 + 1] = EFFECT_CONFIG.initialWaterColorG; // G
                     colors[i * 3 + 2] = EFFECT_CONFIG.initialWaterColorB;  // B
@@ -825,11 +825,11 @@
                         // 更新高度
                         positions.setY(vertexIndex, this.waterData.heights[index]);
                         
-                        // 更新颜色（从浅蓝色到黑色）
+                        // 更新颜色（从白色到黑色）
                         const inkLevel = this.waterData.inkLevels[index];
-                        const r = Math.max(0.8 - inkLevel * 0.8, 0);
-                        const g = Math.max(0.85 - inkLevel * 0.85, 0);
-                        const b = Math.max(1.0 - inkLevel, 0);
+                        const r = Math.max(EFFECT_CONFIG.initialWaterColorR - inkLevel * EFFECT_CONFIG.initialWaterColorR, 0);
+                        const g = Math.max(EFFECT_CONFIG.initialWaterColorG - inkLevel * EFFECT_CONFIG.initialWaterColorG, 0);
+                        const b = Math.max(EFFECT_CONFIG.initialWaterColorB - inkLevel * EFFECT_CONFIG.initialWaterColorB, 0);
                         
                         colors.setXYZ(vertexIndex, r, g, b);
                     }
