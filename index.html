@@ -15,7 +15,8 @@
     <!--    Change the index to your website's name-->
     <title>ShanghaiTech DataTech</title>
     <!-- Bootstrap Core CSS ––––––––––––––––––––––––––– -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- fontawesome ––––––––––––––––––––––––––– -->
     <script src="https://kit.fontawesome.com/5c9f2dfb26.js"></script>
     <!-- script -->
@@ -28,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap" rel="stylesheet">
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
+
     <style>
         /* Global Styles */
         body {
@@ -38,14 +39,14 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
-        
+
         p {
             margin-bottom: 1.3rem;
             font-family: nexa_regularregular;
             color: #E8E8E8;
             font-size: 1rem;
         }
-        
+
         h2 {
             font-family: 'Exo 2', sans-serif;
             margin: 1.414rem 0 0.5rem 0;
@@ -55,13 +56,13 @@
             letter-spacing: 0.05em;
             font-weight: 700;
         }
-        
+
         /* Navbar */
         #navbar {
             background-color: rgba(35, 35, 35, 0.9);
             backdrop-filter: blur(10px);
         }
-        
+
         .nav-link {
             font-family: nexa_xboldregular;
             text-transform: uppercase;
@@ -70,18 +71,18 @@
             padding-right: 2vw !important;
             color: #d8d8d8 !important;
         }
-        
+
         .nav-link:hover {
             color: #ffffff !important;
         }
-        
+
         /* Home Section with Ink Effect */
         #homeWrapper {
             height: 100vh;
             position: relative;
             overflow: hidden;
         }
-        
+
         #inkCanvas {
             position: fixed;
             top: 0;
@@ -92,7 +93,7 @@
             cursor: crosshair;
             pointer-events: auto;
         }
-        
+
         #homeContainer {
             position: relative;
             z-index: 10;
@@ -103,29 +104,29 @@
             text-align: center;
             pointer-events: none;
         }
-        
+
         #homeContainer .col-8 {
             pointer-events: auto;
         }
-        
+
         #homeContainer .btn {
             pointer-events: auto;
         }
-        
+
         .lead {
             font-family: nexa_regularregular;
             font-size: 1.25rem;
             font-weight: 300;
             color: #E8E8E8;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
-        
+
         .btn {
             font-family: nexa_regularregular;
             font-weight: bold;
             border-width: 2px;
         }
-        
+
         /* About Section */
         #aboutWrapper {
             background-color: rgba(35, 35, 35, 0.85);
@@ -135,7 +136,7 @@
             z-index: 5;
             pointer-events: auto;
         }
-        
+
         /* Resources Section */
         #resourcesWrapper {
             background-color: rgba(26, 26, 26, 0.85);
@@ -145,7 +146,7 @@
             z-index: 5;
             pointer-events: auto;
         }
-        
+
         /* Contact Section */
         #contactWrapper {
             background-color: rgba(35, 35, 35, 0.85);
@@ -155,39 +156,79 @@
             z-index: 5;
             pointer-events: auto;
         }
-        
+
         .footer {
             padding: 2rem 0;
         }
-        
+
         .footer .social ul li {
             display: inline-block;
         }
-        
+
         .footer .social ul li a {
             display: inline-block;
             padding: 10px;
             font-size: 2rem;
             color: #E8E8E8;
         }
-        
+
         .footer .social ul li a:hover {
             color: #ffffff;
         }
-        
+
         /* Logo Styles */
         .datatech-logo {
             font-family: single_fighterregular;
             font-size: 4rem;
             color: #E8E8E8;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
             letter-spacing: 0.075em;
         }
-        
+
         @media (max-width: 768px) {
             .datatech-logo {
                 font-size: 2.5rem;
             }
+        }
+
+
+        /* Home Section with WebGL Background */
+        #homeWrapper {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #inkCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: auto;
+            /* 允许背景接收鼠标事件 */
+            filter: invert(1);
+        }
+
+        #homeContainer {
+            position: relative;
+            z-index: 10;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+            /* 让容器本身不阻挡鼠标事件 */
+        }
+
+        /* 确保内容元素仍可交互 */
+        #homeContainer .col-8,
+        #homeContainer .btn,
+        #homeContainer a,
+        #homeContainer svg {
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -202,7 +243,9 @@
                         <span class="fw-bold text-light" style="font-size: 1.5rem;">DataTech</span>
                     </a>
                 </div>
-                <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-center col-lg-auto" id="navbarToggler">
@@ -233,23 +276,24 @@
             <div class="row justify-content-center">
                 <div class="col-8">
                     <div class="mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 156" style="max-width: 100%; height: auto;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 156"
+                            style="max-width: 100%; height: auto;">
                             <defs>
                                 <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.8)"/>
+                                    <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.8)" />
                                 </filter>
                             </defs>
-                            <text id="DataTech" data-name="DataTech" fill="#e8e8e8"
-                            font-size="85" font-family="single_fighterregular"
-                            letter-spacing="0.075em" filter="url(#textShadow)"><tspan x="50"
-                            y="124">D</tspan><tspan y="124" font-size="75"
-                            letter-spacing="0.08em">a</tspan><tspan y="124"
-                            font-size="80" letter-spacing="0.05em">t</tspan><tspan
-                            y="124" font-size="75" letter-spacing="0.08em">a</tspan><tspan
-                            y="124" font-size="90" letter-spacing="0.1em">T</tspan><tspan
-                            y="124" font-size="75" letter-spacing="0.05em">e</tspan><tspan
-                            y="124" font-size="78" letter-spacing="0.05em">c</tspan><tspan
-                            y="124" font-size="82" letter-spacing="0.05em">h</tspan></text>
+                            <text id="DataTech" data-name="DataTech" fill="#e8e8e8" font-size="50"
+                                font-family="single_fighterregular" letter-spacing="0.075em" filter="url(#textShadow)">
+                                <tspan x="50" y="124">D</tspan>
+                                <tspan y="124" font-size="75" letter-spacing="0.08em">a</tspan>
+                                <tspan y="124" font-size="80" letter-spacing="0.05em">t</tspan>
+                                <tspan y="124" font-size="75" letter-spacing="0.08em">a</tspan>
+                                <tspan y="124" font-size="90" letter-spacing="0.1em">T</tspan>
+                                <tspan y="124" font-size="75" letter-spacing="0.05em">e</tspan>
+                                <tspan y="124" font-size="78" letter-spacing="0.05em">c</tspan>
+                                <tspan y="124" font-size="82" letter-spacing="0.05em">h</tspan>
+                            </text>
                         </svg>
                     </div>
                     <p class="lead fw-normal">Exploring Data Science and Technology at ShanghaiTech University</p>
@@ -266,8 +310,13 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 px-5">
                     <h2>About DataTech</h2>
-                    <p>DataTech is a student organization at ShanghaiTech University dedicated to exploring the frontiers of data science and technology. We bring together passionate students who are interested in machine learning, artificial intelligence, data analysis, and cutting-edge technological innovations.</p>
-                    <p>Our mission is to foster a collaborative environment where students can learn, share knowledge, and work on exciting projects that push the boundaries of what's possible with data and technology.</p>
+                    <p>DataTech is a student organization at ShanghaiTech University dedicated to exploring the
+                        frontiers of data science and technology. We bring together passionate students who are
+                        interested in machine learning, artificial intelligence, data analysis, and cutting-edge
+                        technological innovations.</p>
+                    <p>Our mission is to foster a collaborative environment where students can learn, share knowledge,
+                        and work on exciting projects that push the boundaries of what's possible with data and
+                        technology.</p>
                 </div>
                 <div class="col-md-6 pt-5 ps-3">
                     <div class="row">
@@ -295,24 +344,36 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-brain me-2"></i>Machine Learning</h5>
-                            <p class="card-text">Explore the latest in ML algorithms, deep learning frameworks, and AI applications.</p>
+                            <h5 class="card-title"
+                                style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <i class="fas fa-brain me-2"></i>Machine Learning
+                            </h5>
+                            <p class="card-text">Explore the latest in ML algorithms, deep learning frameworks, and AI
+                                applications.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-chart-bar me-2"></i>Data Analysis</h5>
-                            <p class="card-text">Learn data visualization, statistical analysis, and data-driven decision making.</p>
+                            <h5 class="card-title"
+                                style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <i class="fas fa-chart-bar me-2"></i>Data Analysis
+                            </h5>
+                            <p class="card-text">Learn data visualization, statistical analysis, and data-driven
+                                decision making.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;"><i class="fas fa-code me-2"></i>Tech Innovation</h5>
-                            <p class="card-text">Discover emerging technologies and participate in innovative projects.</p>
+                            <h5 class="card-title"
+                                style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                                <i class="fas fa-code me-2"></i>Tech Innovation
+                            </h5>
+                            <p class="card-text">Discover emerging technologies and participate in innovative projects.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -341,972 +402,13 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    
-    <script>
-        // ==================== 效果参数配置 ====================
-        const EFFECT_CONFIG = {
-            // 水面基础参数
-            gridSize: 256,              // 水面网格大小
-            waterSize: 10,              // 水面物理尺寸
-            
-            // 水波物理参数
-            dampening: 0.95,            // 水波阻尼系数（降低阻尼增强水波强度）
-            springConstant: 0.035,      // 弹簧常数（增加弹性增强水波强度）
-            
-            // 鼠标交互参数
-            mouseTriggerThreshold: 0.0005,  // 鼠标移动触发阈值（降低阈值提高敏感度）
-            mouseIntensityMultiplier: 25,   // 鼠标强度倍数（增加强度）
-            minMouseIntensity: 6,           // 最小鼠标强度（提高最小强度）
-            maxMouseIntensity: 20,          // 最大鼠标强度（增加最大强度）
-            
-            // 轨迹插值参数
-            trailGapThreshold: 0.018,       // 轨迹间隙阈值（适当提高阈值减少计算量）
-            trailDensityMultiplier: 60,     // 轨迹密度倍数（降低密度减少卡顿）
-            trailMinSteps: 2,               // 轨迹最小步数（降低最小步数）
-            trailIntensityMultiplier: 22,   // 轨迹强度倍数（适当降低强度）
-            trailMinIntensity: 3,           // 轨迹最小强度（降低最小强度）
-            
-            // 墨水消失参数
-            inkFadeTime: 300,          // 墨水完全消失时间（毫秒）- 加快消失速度
-            inkFadeDecayRate: 0.002,    // 墨水衰减率
-            inkMinThreshold: 0.01,      // 墨水最小阈值
-            
-            // 墨水扩散参数
-            inkDiffusionRate: 0.006,    // 墨水扩散速率（增加扩散速率提高流动性）
-            
-            // 泼溅效果参数
-            splashAngleSegments: 12,        // 泼溅角度分段数
-            splashRadiusVariationMin: 0.7,  // 泼溅半径变化最小值
-            splashRadiusVariationMax: 1.3,  // 泼溅半径变化最大值
-            splashNoiseFrequency: 0.5,      // 泼溅噪声频率
-            splashNoiseAmplitude: 0.25,     // 泼溅噪声幅度
-            splashNoiseOffset: 0.75,        // 泼溅噪声偏移
-            
-            // 飞溅墨点参数
-            splatterCountMultiplier: 5.8,   // 飞溅数量倍数
-            splatterCountBase: 3,           // 飞溅基础数量
-            splatterDistanceMin: 1.2,       // 飞溅距离最小倍数
-            splatterDistanceMax: 2.0,       // 飞溅距离最大倍数
-            splatterSizeMultiplier: 0.3,    // 飞溅大小倍数
-            splatterIntensityMultiplier: 0.3, // 飞溅强度倍数
-            splatterRandomFactorMin: 0.8,   // 飞溅随机因子最小值
-            splatterRandomFactorMax: 1.2,   // 飞溅随机因子最大值
-            
-            // 视觉效果参数
-            initialWaterColorR: 1.0,    // 初始水面颜色R
-            initialWaterColorG: 1.0,   // 初始水面颜色G
-            initialWaterColorB: 1.0,    // 初始水面颜色B
-            backgroundColor: 0xffffff,  // 背景颜色
-            
-            // 相机参数
-            cameraFOV: 90,              // 相机视野角度（调整以让水面填满视野）
-            cameraPosX: 0,              // 相机X位置
-            cameraPosY: 10,              // 相机Y位置（降低高度让水面填满屏幕）
-            cameraPosZ: 0,             // 相机Z位置
-            
-            // 光照参数
-            ambientLightIntensity: 0.95,    // 环境光强度
-            directionalLightIntensity: 0.3, // 方向光强度
-            directionalLightPosX: 0,        // 方向光X位置
-            directionalLightPosY: 10,       // 方向光Y位置
-            directionalLightPosZ: 50,       // 方向光Z位置
-            
-            // 水面材质参数
-            waterOpacity: 0.9,              // 水面透明度
-            waterShininess: 150,            // 水面光泽度
-            waterSpecular: 0x888888,        // 水面镜面反射颜色
-            
-            // 物理参数
-            waterDampening: 0.98,           // 水波阻尼
-            waterSpringConstant: 0.02,      // 水波弹簧常数
-            minWaterHeight: -1.5,           // 最小水面高度
-            maxWaterHeight: 0.5,            // 最大水面高度
-            
-            // 鼠标交互参数（更新）
-            maxTrailLength: 16,             // 最大轨迹长度（允许更长连续轨迹）
-            minMoveDistance: 0.001,         // 最小移动距离（减小让采样更密集，防止断点）
-            intensityMultiplier: 30,        // 强度倍数（适当降低强度）
-            minIntensity: 5,                // 最小强度（降低最小强度）
-            
-            // 轨迹填充参数（更新）
-            gapFillThreshold: 0.018,        // 间隙填充阈值（适当提升，减少插值点数）
-            gapFillDensity: 22,              // 间隙填充密度（降低密度防止爆卡）
-            minGapFillSteps: 2,              // 最小间隙填充步数
-            gapFillIntensityMultiplier: 16, // 间隙填充强度倍数（降低强度防止爆卡）
-            minGapFillIntensity: 3,         // 最小间隙填充强度（降低最小强度）
-            
-            // 墨水半径参数
-            radiusMultiplier: 0.2,          // 半径倍数
-            minRadius: 1,                   // 最小半径
-            maxRadius: 5,                   // 最大半径
-            
-            // 泼溅形状参数（更新）
-            splashAngleSegments: 12,        // 泼溅角度分段
-            minRadiusVariation: 0.7,        // 最小半径变化
-            radiusVariationRange: 0.6,      // 半径变化范围
-            
-            // 飞溅参数（更新）
-            splatterCountMultiplier: 0.8,   // 飞溅数量倍数
-            minSplatterCount: 3,            // 最小飞溅数量
-            minSplatterDistance: 1.2,       // 最小飞溅距离
-            splatterDistanceRange: 0.8,     // 飞溅距离范围
-            minSplatterSize: 1,             // 最小飞溅大小
-            splatterSizeMultiplier: 0.3,    // 飞溅大小倍数
-            splatterIntensityMultiplier: 0.3, // 飞溅强度倍数
-            
-            // 墨水老化参数
-            frameTime: 16,                  // 帧时间（毫秒）
-            inkDecayBase: 0.998,            // 墨水衰减基数（略微加快稀释）
-            inkDecayRate: 0.003,            // 墨水衰减率（加快消散）
-            inkClearThreshold: 0.008,       // 墨水清除阈值（更早消失）
-            
-            // 墨水扩散参数（更新）
-            inkDiffusionRate: 0.014,        // 墨水扩散率（进一步提升晕染速度）
-            inkDiffusionAnisotropy: 0.38,   // 墨水扩散各向异性（更快顺水流扩散）
-        };
-        // ==================== 效果参数配置结束 ====================
-        
-        class InkWaterEffect {
-            constructor() {
-                this.canvas = document.getElementById('inkCanvas');
-                this.width = window.innerWidth;
-                this.height = window.innerHeight;
-                
-                // 使用配置参数
-                this.gridSize = EFFECT_CONFIG.gridSize;
-                
-                // 根据屏幕尺寸动态计算水面大小
-                const aspectRatio = this.width / this.height;
-                const cameraHeight = EFFECT_CONFIG.cameraPosY;
-                const fov = EFFECT_CONFIG.cameraFOV;
-                
-                // 根据相机高度和FOV计算视野范围
-                const fovRad = (fov * Math.PI) / 180;
-                const visibleHeight = 2 * Math.tan(fovRad / 2) * cameraHeight;
-                const visibleWidth = visibleHeight * aspectRatio;
-                
-                // 设置水面尺寸稍大于可见范围，确保完全覆盖
-                this.waterWidth = visibleWidth * 1.1;
-                this.waterHeight = visibleHeight * 1.1;
-                this.waterSize = Math.max(this.waterWidth, this.waterHeight); // 保持兼容性
-                
-                // 墨水消失参数
-                this.inkFadeTime = EFFECT_CONFIG.inkFadeTime;
-                this.inkFadeRate = EFFECT_CONFIG.inkDecayRate;
-                
-                // 鼠标状态
-                this.mouse = { x: 0, y: 0, prevX: 0, prevY: 0, trail: [] };
-                this.raycaster = new THREE.Raycaster();
-                this.mouseVector = new THREE.Vector2();
-                
-                // 水面数据
-                this.waterData = {
-                    heights: new Float32Array(this.gridSize * this.gridSize),
-                    velocities: new Float32Array(this.gridSize * this.gridSize),
-                    inkLevels: new Float32Array(this.gridSize * this.gridSize),
-                    inkAge: new Float32Array(this.gridSize * this.gridSize),
-                    prevHeights: new Float32Array(this.gridSize * this.gridSize)
-                };
-                
-                this.initThree();
-                this.createWaterSurface();
-                this.bindEvents();
-                this.setupCardInteraction();
-                this.animate();
-            }
-            
-            initThree() {
-                // 场景
-                this.scene = new THREE.Scene();
-                this.scene.background = new THREE.Color(0x001122); // 深蓝色背景
-                
-                // 相机
-                this.camera = new THREE.PerspectiveCamera(
-                    EFFECT_CONFIG.cameraFOV, 
-                    this.width / this.height, 
-                    0.1, 
-                    1000
-                );
-                this.camera.position.set(
-                    EFFECT_CONFIG.cameraPosX, 
-                    EFFECT_CONFIG.cameraPosY, 
-                    EFFECT_CONFIG.cameraPosZ
-                );
-                this.camera.lookAt(0, 0, 0);
-                
-                // 渲染器
-                this.renderer = new THREE.WebGLRenderer({ 
-                    canvas: this.canvas,
-                    antialias: true,
-                    alpha: true
-                });
-                this.renderer.setSize(this.width, this.height);
-                this.renderer.shadowMap.enabled = true;
-                this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-                // 使用深蓝色背景，更适合墨水效果
-                this.renderer.setClearColor(0xffffff, 1);
-                
-                // 光照
-                const ambientLight = new THREE.AmbientLight(0xffffff, EFFECT_CONFIG.ambientLightIntensity);
-                this.scene.add(ambientLight);
-                
-                const directionalLight = new THREE.DirectionalLight(0xffffff, EFFECT_CONFIG.directionalLightIntensity);
-                directionalLight.position.set(
-                    EFFECT_CONFIG.directionalLightPosX, 
-                    EFFECT_CONFIG.directionalLightPosY, 
-                    EFFECT_CONFIG.directionalLightPosZ
-                );
-                directionalLight.castShadow = true;
-                directionalLight.shadow.mapSize.width = 2048;
-                directionalLight.shadow.mapSize.height = 2048;
-                this.scene.add(directionalLight);
-            }
-            
-            createWaterSurface() {
-                // 创建水面几何体（根据屏幕比例）
-                this.waterGeometry = new THREE.PlaneGeometry(
-                    this.waterWidth, 
-                    this.waterHeight, 
-                    this.gridSize - 1, 
-                    this.gridSize - 1
-                );
-                this.waterGeometry.rotateX(-Math.PI / 2);
-                
-                // 初始化水面高度和墨水数据
-                const positions = this.waterGeometry.attributes.position;
-                const colors = new Float32Array(positions.count * 3);
-                
-                for (let i = 0; i < positions.count; i++) {
-                    // 添加微小的随机波动
-                    positions.setY(i, (Math.random() - 0.5) * 0.01);
-                    
-                    // 初始颜色为白色，增加与背景的对比度
-                    colors[i * 3] = EFFECT_CONFIG.initialWaterColorR;     // R
-                    colors[i * 3 + 1] = EFFECT_CONFIG.initialWaterColorG; // G
-                    colors[i * 3 + 2] = EFFECT_CONFIG.initialWaterColorB;  // B
-                }
-                
-                this.waterGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-                
-                // 水面材质
-                this.waterMaterial = new THREE.MeshPhongMaterial({
-                    vertexColors: true,
-                    transparent: true,
-                    opacity: EFFECT_CONFIG.waterOpacity,
-                    shininess: EFFECT_CONFIG.waterShininess,
-                    specular: EFFECT_CONFIG.waterSpecular
-                });
-                
-                // 创建水面网格
-                this.waterMesh = new THREE.Mesh(this.waterGeometry, this.waterMaterial);
-                this.waterMesh.receiveShadow = true;
-                this.scene.add(this.waterMesh);
-            }
-            
-            bindEvents() {
-                // 添加鼠标进入和离开事件处理
-                let isMouseOverCanvas = false;
-                let lastProcessTime = 0;
-                const throttleDelay = 16; // 限制处理频率，约60fps（降低频率减少卡顿）
-                
-                this.renderer.domElement.addEventListener('mouseenter', () => {
-                    isMouseOverCanvas = true;
-                    // 重置轨迹，避免从上次位置计算距离
-                    this.mouse.trail = [];
-                });
-                
-                this.renderer.domElement.addEventListener('mouseleave', () => {
-                    isMouseOverCanvas = false;
-                    // 清空轨迹
-                    this.mouse.trail = [];
-                });
-                
-                window.addEventListener('mousemove', (event) => {
-                    // 节流处理，避免过于频繁的更新
-                    const now = Date.now();
-                    if (now - lastProcessTime < throttleDelay) return;
-                    lastProcessTime = now;
-                    // 只有鼠标在画布上时才处理
-                    if (!isMouseOverCanvas) return;
-                    
-                    this.mouse.prevX = this.mouse.x;
-                    this.mouse.prevY = this.mouse.y;
-                    
-                    // 转换鼠标坐标
-                    this.mouseVector.x = (event.clientX / this.width) * 2 - 1;
-                    this.mouseVector.y = -(event.clientY / this.height) * 2 + 1;
-                    
-                    // 射线检测
-                    this.raycaster.setFromCamera(this.mouseVector, this.camera);
-                    const intersects = this.raycaster.intersectObject(this.waterMesh);
-                    
-                    if (intersects.length > 0) {
-                        const point = intersects[0].point;
-                        this.mouse.x = point.x;
-                        this.mouse.y = point.z;
-                        
-                        // 如果是第一次移动（轨迹为空），直接设置位置而不计算距离
-                        if (this.mouse.trail.length === 0) {
-                            this.mouse.prevX = this.mouse.x;
-                            this.mouse.prevY = this.mouse.y;
-                        }
-                        
-                        const distance = Math.sqrt(
-                            Math.pow(this.mouse.x - this.mouse.prevX, 2) + 
-                            Math.pow(this.mouse.y - this.mouse.prevY, 2)
-                        );
-                        
-                        // 记录鼠标轨迹，用于连续墨水效果
-                        this.mouse.trail.push({
-                            x: this.mouse.x,
-                            y: this.mouse.y,
-                            time: Date.now()
-                        });
-                        
-                        // 限制轨迹长度
-                        if (this.mouse.trail.length > EFFECT_CONFIG.maxTrailLength) {
-                            this.mouse.trail.shift();
-                        }
-                        
-                        // 只有在有效移动距离时才添加墨水
-                        if (distance > EFFECT_CONFIG.minMoveDistance && this.mouse.trail.length > 1) {
-                            const intensity = Math.min(
-                                Math.max(distance * EFFECT_CONFIG.intensityMultiplier, EFFECT_CONFIG.minMouseIntensity),
-                                EFFECT_CONFIG.maxMouseIntensity
-                            );
-                            this.addWaveAndInk(this.mouse.x, this.mouse.y, intensity);
-                        }
-                        
-                        // 只有在轨迹长度大于1时才进行插值
-                        if (this.mouse.trail.length >= 2) {
-                            const lastPoint = this.mouse.trail[this.mouse.trail.length - 2];
-                            this.fillTrailGap(lastPoint.x, lastPoint.y, this.mouse.x, this.mouse.y);
-                        }
-                    }
-                });
-                
-                window.addEventListener('resize', () => {
-                    this.width = window.innerWidth;
-                    this.height = window.innerHeight;
-                    
-                    // 重新计算水面尺寸
-                    const aspectRatio = this.width / this.height;
-                    const cameraHeight = EFFECT_CONFIG.cameraPosY;
-                    const fov = EFFECT_CONFIG.cameraFOV;
-                    const fovRad = (fov * Math.PI) / 180;
-                    const visibleHeight = 2 * Math.tan(fovRad / 2) * cameraHeight;
-                    const visibleWidth = visibleHeight * aspectRatio;
-                    
-                    this.waterWidth = visibleWidth * 1.1;
-                    this.waterHeight = visibleHeight * 1.1;
-                    this.waterSize = Math.max(this.waterWidth, this.waterHeight);
-                    
-                    // 更新水面几何体
-                    if (this.waterGeometry) {
-                        this.waterGeometry.dispose();
-                        this.waterGeometry = new THREE.PlaneGeometry(
-                            this.waterWidth,
-                            this.waterHeight,
-                            this.gridSize - 1,
-                            this.gridSize - 1
-                        );
-                        this.waterGeometry.rotateX(-Math.PI / 2);
-                        
-                        // 重新初始化顶点数据
-                        const positions = this.waterGeometry.attributes.position;
-                        const colors = new Float32Array(positions.count * 3);
-                        
-                        for (let i = 0; i < positions.count; i++) {
-                            positions.setY(i, (Math.random() - 0.5) * 0.01);
-                            colors[i * 3] = EFFECT_CONFIG.initialWaterColorR;
-                            colors[i * 3 + 1] = EFFECT_CONFIG.initialWaterColorG;
-                            colors[i * 3 + 2] = EFFECT_CONFIG.initialWaterColorB;
-                        }
-                        
-                        this.waterGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-                        this.waterMesh.geometry = this.waterGeometry;
-                    }
-                    
-                    this.camera.aspect = this.width / this.height;
-                    this.camera.updateProjectionMatrix();
-                    this.renderer.setSize(this.width, this.height);
-                });
-            }
-            
-            // 设置卡片与水面的交互
-            setupCardInteraction() {
-                // 获取所有卡片元素
-                const cards = document.querySelectorAll('.card');
-                const resourcesSection = document.getElementById('resourcesWrapper');
-                
-                // 卡片位置数据
-                this.cardPositions = [];
-                
-                // 初始化卡片位置数据
-                cards.forEach(card => {
-                    this.cardPositions.push({
-                        element: card,
-                        x: 0,
-                        y: 0,
-                        prevY: 0,
-                        velocity: 0,
-                        lastUpdate: Date.now()
-                    });
-                    
-                    // 添加3D变换样式
-                    card.style.transition = 'transform 0.2s ease-out';
-                    card.style.transformStyle = 'preserve-3d';
-                    card.style.transform = 'translateZ(0)';
-                });
-                
-                // 监听滚动事件
-                window.addEventListener('scroll', () => {
-                    this.updateCardPositions();
-                });
-                
-                // 初始更新卡片位置
-                this.updateCardPositions();
-                
-                // 定期更新卡片与水面的交互
-                setInterval(() => {
-                    this.updateWaterInteraction();
-                }, 100);
-            }
-            
-            // 更新卡片位置
-            updateCardPositions() {
-                const now = Date.now();
-                
-                this.cardPositions.forEach(cardData => {
-                    const rect = cardData.element.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
-                    const centerY = rect.top + rect.height / 2;
-                    
-                    // 计算卡片在水面坐标系中的位置
-                    const normalizedX = (centerX / window.innerWidth) * 2 - 1;
-                    const normalizedY = -(centerY / window.innerHeight) * 2 + 1;
-                    
-                    // 射线检测获取水面上的位置
-                    this.mouseVector.x = normalizedX;
-                    this.mouseVector.y = normalizedY;
-                    this.raycaster.setFromCamera(this.mouseVector, this.camera);
-                    const intersects = this.raycaster.intersectObject(this.waterMesh);
-                    
-                    if (intersects.length > 0) {
-                        const point = intersects[0].point;
-                        
-                        // 保存前一个位置
-                        cardData.prevY = cardData.y;
-                        
-                        // 更新卡片位置
-                        cardData.x = point.x;
-                        cardData.y = point.z;
-                        
-                        // 计算垂直速度
-                        const deltaTime = (now - cardData.lastUpdate) / 1000;
-                        if (deltaTime > 0) {
-                            cardData.velocity = (cardData.y - cardData.prevY) / deltaTime;
-                        }
-                        
-                        // 根据速度添加3D倾斜效果
-                        const tiltAmount = Math.min(Math.max(cardData.velocity * 10, -15), 15);
-                        cardData.element.style.transform = `translateZ(0) rotateX(${tiltAmount}deg)`;
-                        
-                        cardData.lastUpdate = now;
-                    }
-                });
-            }
-            
-            // 更新水面与卡片的交互
-            updateWaterInteraction() {
-                this.cardPositions.forEach(cardData => {
-                    // 只有当卡片在视口内且有一定速度时才产生水波
-                    const rect = cardData.element.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    
-                    if (isVisible && Math.abs(cardData.velocity) > 0.1) {
-                        // 根据速度计算强度
-                        const intensity = Math.min(Math.abs(cardData.velocity) * 20, 30);
-                        
-                        // 在卡片位置添加水波
-                        this.addWaveAndInk(cardData.x, cardData.y, intensity);
-                        
-                        // 在卡片周围添加多个水波点，模拟更大的影响区域
-                        const radius = Math.min(rect.width, rect.height) / 100;
-                        for (let i = 0; i < 5; i++) {
-                            const angle = Math.random() * Math.PI * 2;
-                            const distance = Math.random() * radius;
-                            const offsetX = Math.cos(angle) * distance;
-                            const offsetY = Math.sin(angle) * distance;
-                            
-                            this.addWaveAndInk(
-                                cardData.x + offsetX, 
-                                cardData.y + offsetY, 
-                                intensity * 0.7
-                            );
-                        }
-                    }
-                });
-            }
-            
-            // 在两点之间填充墨水，确保连续性
-            fillTrailGap(x1, y1, x2, y2) {
-                const distance = Math.sqrt(
-                    Math.pow(x2 - x1, 2) + 
-                    Math.pow(y2 - y1, 2)
-                );
-                
-                // 降低距离阈值，确保更好的连续性
-                if (distance < EFFECT_CONFIG.gapFillThreshold) return;
-                
-                // 计算需要插入的点数量，增加更多密度
-                const steps = Math.max(Math.ceil(distance * EFFECT_CONFIG.gapFillDensity), EFFECT_CONFIG.minGapFillSteps);
-                
-                for (let i = 1; i < steps; i++) {
-                    const t = i / steps;
-                    const x = x1 + (x2 - x1) * t;
-                    const y = y1 + (y2 - y1) * t;
-                    
-                    // 在插值点添加墨水，保持一定强度确保连续性
-                    const intensity = Math.max(distance * EFFECT_CONFIG.gapFillIntensityMultiplier * (1 - t * 0.5), EFFECT_CONFIG.minGapFillIntensity);
-                    this.addWaveAndInk(x, y, intensity);
-                }
-            }
-            
-            addWaveAndInk(x, y, intensity) {
-                // 转换世界坐标到网格坐标，使用水面实际尺寸
-                const gridX = Math.round((x + this.waterWidth / 2) / this.waterWidth * this.gridSize);
-                const gridY = Math.round((y + this.waterHeight / 2) / this.waterHeight * this.gridSize);
-                
-                // 确保坐标在有效范围内
-                if (gridX < 0 || gridX >= this.gridSize || gridY < 0 || gridY >= this.gridSize) {
-                    return;
-                }
-                
-                // 基础半径
-                const baseRadius = Math.min(
-                    Math.floor(intensity * EFFECT_CONFIG.radiusMultiplier) + EFFECT_CONFIG.minRadius,
-                    EFFECT_CONFIG.maxRadius
-                );
-                
-                // 生成主墨水区域（不规则形状）
-                this.createSplashInk(gridX, gridY, baseRadius, intensity);
-                
-                // 添加飞溅的小墨点
-                this.createInkSplatters(gridX, gridY, baseRadius, intensity);
-            }
-            
-            // 创建不规则形状的主墨水区域
-            createSplashInk(centerX, centerY, baseRadius, intensity) {
-                // 创建不规则边缘的墨水
-                const angleStep = Math.PI * 2 / EFFECT_CONFIG.splashAngleSegments;
-                const points = [];
-                
-                // 生成不规则边缘点
-                for (let angle = 0; angle < Math.PI * 2; angle += angleStep) {
-                    // 每个方向的半径有随机变化
-                    const radiusVariation = EFFECT_CONFIG.minRadiusVariation + Math.random() * EFFECT_CONFIG.radiusVariationRange;
-                    const radius = baseRadius * radiusVariation;
-                    
-                    // 计算该角度的点坐标
-                    const dx = Math.cos(angle) * radius;
-                    const dy = Math.sin(angle) * radius;
-                    
-                    points.push({
-                        x: Math.round(dx),
-                        y: Math.round(dy),
-                        radius: radius
-                    });
-                }
-                
-                // 填充不规则形状内部
-                this.fillIrregularShape(centerX, centerY, points, baseRadius, intensity);
-            }
-            
-            // 填充不规则形状
-            fillIrregularShape(centerX, centerY, points, baseRadius, intensity) {
-                // 确定边界框
-                let minX = -baseRadius * 1.5;
-                let maxX = baseRadius * 1.5;
-                let minY = -baseRadius * 1.5;
-                let maxY = baseRadius * 1.5;
-                
-                // 遍历边界框中的每个点
-                for (let i = minX; i <= maxX; i++) {
-                    for (let j = minY; j <= maxY; j++) {
-                        const nx = centerX + i;
-                        const ny = centerY + j;
-                        
-                        // 使用更宽松的边界检查，确保角落区域也能处理
-                        if (nx >= 0 && nx < this.gridSize && ny >= 0 && ny < this.gridSize) {
-                            // 判断点是否在不规则形状内
-                            const isInside = this.isPointInIrregularShape(i, j, points, baseRadius);
-                            
-                            if (isInside) {
-                                const index = ny * this.gridSize + nx;
-                                
-                                // 计算到中心的距离，用于确定墨水浓度
-                                const distToCenter = Math.sqrt(i * i + j * j);
-                                const normalizedDist = Math.min(distToCenter / (baseRadius * 1.5), 1.0);
-                                
-                                // 添加不规则的墨水浓度变化
-                                const noiseValue = Math.sin(i * 0.5) * Math.cos(j * 0.5) * 0.25 + 0.75;
-                                // 晕染边缘更自然，中心浓度更高，边缘递减更缓慢
-                                const inkAmount = Math.pow(1 - normalizedDist, 1.5) * 0.23 * noiseValue;
-                                
-                                // 添加波浪力
-                                const force = (1 - normalizedDist) * intensity * 0.02 * noiseValue;
-                                this.waterData.velocities[index] += force;
-                                
-                                // 添加墨水
-                                const newInkLevel = Math.min(
-                                    this.waterData.inkLevels[index] + inkAmount, 
-                                    1.0
-                                );
-                                
-                                // 如果添加了新墨水，重置该点的年龄
-                                if (newInkLevel > this.waterData.inkLevels[index]) {
-                                    this.waterData.inkAge[index] = 0;
-                                }
-                                
-                                this.waterData.inkLevels[index] = newInkLevel;
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // 判断点是否在不规则形状内
-            isPointInIrregularShape(x, y, points, baseRadius) {
-                // 简单判断：如果点到中心的距离小于最小半径的0.7倍，肯定在内部
-                const distToCenter = Math.sqrt(x * x + y * y);
-                if (distToCenter < baseRadius * 0.7) {
-                    return true;
-                }
-                
-                // 如果距离大于最大半径的1.3倍，肯定在外部
-                if (distToCenter > baseRadius * 1.5) {
-                    return false;
-                }
-                
-                // 计算点的角度
-                const angle = Math.atan2(y, x);
-                let normalizedAngle = angle;
-                if (normalizedAngle < 0) normalizedAngle += Math.PI * 2;
-                
-                // 找到点所在的扇区
-                const angleStep = Math.PI * 2 / points.length;
-                const sectorIndex = Math.floor(normalizedAngle / angleStep);
-                const nextIndex = (sectorIndex + 1) % points.length;
-                
-                // 在两个相邻点之间进行插值
-                const t = (normalizedAngle - sectorIndex * angleStep) / angleStep;
-                const interpolatedRadius = points[sectorIndex].radius * (1 - t) + points[nextIndex].radius * t;
-                
-                // 如果点到中心的距离小于插值半径，则在内部
-                return distToCenter <= interpolatedRadius;
-            }
-            
-            // 创建墨水飞溅效果
-            createInkSplatters(centerX, centerY, baseRadius, intensity) {
-                // 飞溅的数量与强度成正比
-                const splatterCount = Math.floor(intensity * EFFECT_CONFIG.splatterCountMultiplier) + EFFECT_CONFIG.minSplatterCount;
-                
-                for (let i = 0; i < splatterCount; i++) {
-                    // 随机角度
-                    const angle = Math.random() * Math.PI * 2;
-                    
-                    // 随机距离（比主墨水区域更远）
-                    const distance = baseRadius * (EFFECT_CONFIG.minSplatterDistance + Math.random() * EFFECT_CONFIG.splatterDistanceRange);
-                    
-                    // 计算飞溅点的位置
-                    const splatterX = centerX + Math.cos(angle) * distance;
-                    const splatterY = centerY + Math.sin(angle) * distance;
-                    
-                    // 飞溅点的大小
-                    const splatterSize = EFFECT_CONFIG.minSplatterSize + Math.random() * baseRadius * EFFECT_CONFIG.splatterSizeMultiplier;
-                    
-                    // 在飞溅点位置添加小墨点
-                    this.addSplatterDot(splatterX, splatterY, splatterSize, intensity * EFFECT_CONFIG.splatterIntensityMultiplier);
-                }
-            }
-            
-            // 添加单个飞溅墨点
-            addSplatterDot(x, y, size, intensity) {
-                const gridX = Math.floor(x);
-                const gridY = Math.floor(y);
-                
-                // 确保坐标在网格范围内
-                if (gridX < 0 || gridX >= this.gridSize || gridY < 0 || gridY >= this.gridSize) {
-                    return;
-                }
-                
-                // 添加不规则的小墨点
-                for (let i = -size; i <= size; i++) {
-                    for (let j = -size; j <= size; j++) {
-                        const nx = gridX + i;
-                        const ny = gridY + j;
-                        
-                        // 使用更宽松的边界检查，确保角落区域也能处理
-                        if (nx >= 0 && nx < this.gridSize && ny >= 0 && ny < this.gridSize) {
-                            const distance = Math.sqrt(i * i + j * j);
-                            
-                            // 添加一些随机性，使墨点形状不规则
-                            const randomFactor = 0.8 + Math.random() * 0.4;
-                            if (distance <= size * randomFactor) {
-                                const index = ny * this.gridSize + nx;
-                                
-                                // 添加波浪力
-                                const force = (1 - distance / size) * intensity * 0.01;
-                                this.waterData.velocities[index] += force;
-                                
-                                // 添加墨水，小墨点的墨水量较少
-                                const inkAmount = (1 - distance / size) * 0.2;
-                                const newInkLevel = Math.min(
-                                    this.waterData.inkLevels[index] + inkAmount, 
-                                    1.0
-                                );
-                                
-                                // 如果添加了新墨水，重置该点的年龄
-                                if (newInkLevel > this.waterData.inkLevels[index]) {
-                                    this.waterData.inkAge[index] = 0;
-                                }
-                                
-                                this.waterData.inkLevels[index] = newInkLevel;
-                            }
-                        }
-                    }
-                }
-            }
-            
-            updateWater() {
-                const dampening = EFFECT_CONFIG.waterDampening;
-                const springConstant = EFFECT_CONFIG.waterSpringConstant;
-                
-                // 保存当前高度
-                for (let i = 0; i < this.waterData.heights.length; i++) {
-                    this.waterData.prevHeights[i] = this.waterData.heights[i];
-                }
-                
-                // 更新水波物理
-                for (let y = 1; y < this.gridSize - 1; y++) {
-                    for (let x = 1; x < this.gridSize - 1; x++) {
-                        const index = y * this.gridSize + x;
-                        
-                        // 计算周围平均高度
-                        const avgHeight = (
-                            this.waterData.heights[index - 1] +
-                            this.waterData.heights[index + 1] +
-                            this.waterData.heights[index - this.gridSize] +
-                            this.waterData.heights[index + this.gridSize]
-                        ) / 4;
-                        
-                        // 弹簧力
-                        const springForce = (avgHeight - this.waterData.heights[index]) * springConstant;
-                        this.waterData.velocities[index] += springForce;
-                        
-                        // 阻尼
-                        this.waterData.velocities[index] *= dampening;
-                        
-                        // 更新高度
-                        this.waterData.heights[index] += this.waterData.velocities[index];
-                        
-                        // 限制高度
-                        this.waterData.heights[index] = Math.max(
-                            EFFECT_CONFIG.minWaterHeight, 
-                            Math.min(EFFECT_CONFIG.maxWaterHeight, this.waterData.heights[index])
-                        );
-                    }
-                }
-                
-                // 墨水老化和消失
-                for (let i = 0; i < this.waterData.inkLevels.length; i++) {
-                    if (this.waterData.inkLevels[i] > 0) {
-                        // 增加墨水年龄
-                        this.waterData.inkAge[i] += EFFECT_CONFIG.frameTime;
-                        
-                        // 计算衰减因子（随时间指数衰减）
-                        const ageRatio = this.waterData.inkAge[i] / this.inkFadeTime;
-                        const fadeMultiplier = Math.max(0, 1 - ageRatio);
-                        
-                        // 应用衰减
-                        this.waterData.inkLevels[i] *= (EFFECT_CONFIG.inkDecayBase - ageRatio * EFFECT_CONFIG.inkDecayRate);
-                        
-                        // 如果墨水浓度太低，直接清零
-                        if (this.waterData.inkLevels[i] < EFFECT_CONFIG.inkClearThreshold) {
-                            this.waterData.inkLevels[i] = 0;
-                            this.waterData.inkAge[i] = 0;
-                        }
-                    }
-                }
-                
-                // 墨水扩散和水流推动
-                let diffusionRate = EFFECT_CONFIG.inkDiffusionRate;
-                const flowPushStrength = 0.35; // 水流推动强度（更强的流动性）
-                const newInkLevels = new Float32Array(this.waterData.inkLevels);
-                const newInkAge = new Float32Array(this.waterData.inkAge);
-                
-                for (let y = 1; y < this.gridSize - 1; y++) {
-                    for (let x = 1; x < this.gridSize - 1; x++) {
-                        const index = y * this.gridSize + x;
-                        const currentInk = this.waterData.inkLevels[index];
-                        
-                        if (currentInk > 0) {
-                            // 计算水流方向（基于高度差）
-                            const leftHeight = this.waterData.heights[index - 1];
-                            const rightHeight = this.waterData.heights[index + 1];
-                            const topHeight = this.waterData.heights[index - this.gridSize];
-                            const bottomHeight = this.waterData.heights[index + this.gridSize];
-                            const currentHeight = this.waterData.heights[index];
-                            
-                            // 计算水流速度（基于高度梯度）
-                            const flowX = (leftHeight - rightHeight) * 0.5;
-                            const flowY = (topHeight - bottomHeight) * 0.5;
-                            const flowMagnitude = Math.sqrt(flowX * flowX + flowY * flowY);
-                            
-                            // 邻居索引
-                            const neighbors = {
-                                left: index - 1,
-                                right: index + 1,
-                                top: index - this.gridSize,
-                                bottom: index + this.gridSize
-                            };
-                            
-                            // 1. 普通扩散（浓度梯度驱动）
-                            for (const neighborIndex of Object.values(neighbors)) {
-                                const neighborInk = this.waterData.inkLevels[neighborIndex];
-                                // 各向异性扩散：水流方向扩散更快
-                                let anisotropy = 1.0;
-                                if (neighborIndex === neighbors.left || neighborIndex === neighbors.right) {
-                                    anisotropy += EFFECT_CONFIG.inkDiffusionAnisotropy;
-                                }
-                                if (currentInk > neighborInk) {
-                                    const diff = (currentInk - neighborInk) * diffusionRate * anisotropy;
-                                    newInkLevels[index] -= diff;
-                                    newInkLevels[neighborIndex] += diff;
-                                    
-                                    // 扩散时传递年龄信息
-                                    if (diff > 0.001) {
-                                        const avgAge = (this.waterData.inkAge[index] + this.waterData.inkAge[neighborIndex]) / 2;
-                                        newInkAge[neighborIndex] = avgAge;
-                                    }
-                                }
-                            }
-                            
-                            // 2. 水流推动效果（基于水流方向）
-                            if (flowMagnitude > 0.001) {
-                                // 归一化流向
-                                const normalizedFlowX = flowX / flowMagnitude;
-                                const normalizedFlowY = flowY / flowMagnitude;
-                                
-                                // 计算墨水被推动的量
-                                const pushAmount = currentInk * flowMagnitude * flowPushStrength;
-                                
-                                // 根据流向推动墨水
-                                if (Math.abs(normalizedFlowX) > Math.abs(normalizedFlowY)) {
-                                    // 主要是水平流动
-                                    if (normalizedFlowX > 0) {
-                                        // 向右推动
-                                        const pushToRight = Math.min(pushAmount, currentInk * 0.3);
-                                        newInkLevels[index] -= pushToRight;
-                                        newInkLevels[neighbors.right] += pushToRight;
-                                        // 传递年龄
-                                        if (pushToRight > 0.001) {
-                                            newInkAge[neighbors.right] = this.waterData.inkAge[index];
-                                        }
-                                    } else {
-                                        // 向左推动
-                                        const pushToLeft = Math.min(pushAmount, currentInk * 0.3);
-                                        newInkLevels[index] -= pushToLeft;
-                                        newInkLevels[neighbors.left] += pushToLeft;
-                                        // 传递年龄
-                                        if (pushToLeft > 0.001) {
-                                            newInkAge[neighbors.left] = this.waterData.inkAge[index];
-                                        }
-                                    }
-                                } else {
-                                    // 主要是垂直流动
-                                    if (normalizedFlowY > 0) {
-                                        // 向下推动
-                                        const pushToBottom = Math.min(pushAmount, currentInk * 0.3);
-                                        newInkLevels[index] -= pushToBottom;
-                                        newInkLevels[neighbors.bottom] += pushToBottom;
-                                        // 传递年龄
-                                        if (pushToBottom > 0.001) {
-                                            newInkAge[neighbors.bottom] = this.waterData.inkAge[index];
-                                        }
-                                    } else {
-                                        // 向上推动
-                                        const pushToTop = Math.min(pushAmount, currentInk * 0.3);
-                                        newInkLevels[index] -= pushToTop;
-                                        newInkLevels[neighbors.top] += pushToTop;
-                                        // 传递年龄
-                                        if (pushToTop > 0.001) {
-                                            newInkAge[neighbors.top] = this.waterData.inkAge[index];
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                this.waterData.inkLevels = newInkLevels;
-                this.waterData.inkAge = newInkAge;
-            }
-            
-            updateGeometry() {
-                const positions = this.waterGeometry.attributes.position;
-                const colors = this.waterGeometry.attributes.color;
-                
-                // 更新顶点位置和颜色
-                for (let y = 0; y < this.gridSize; y++) {
-                    for (let x = 0; x < this.gridSize; x++) {
-                        const index = y * this.gridSize + x;
-                        const vertexIndex = index;
-                        
-                        // 更新高度
-                        positions.setY(vertexIndex, this.waterData.heights[index]);
-                        
-                        // 更新颜色（从白色到黑色）
-                        const inkLevel = this.waterData.inkLevels[index];
-                        const r = Math.max(EFFECT_CONFIG.initialWaterColorR - inkLevel * EFFECT_CONFIG.initialWaterColorR, 0);
-                        const g = Math.max(EFFECT_CONFIG.initialWaterColorG - inkLevel * EFFECT_CONFIG.initialWaterColorG, 0);
-                        const b = Math.max(EFFECT_CONFIG.initialWaterColorB - inkLevel * EFFECT_CONFIG.initialWaterColorB, 0);
-                        
-                        colors.setXYZ(vertexIndex, r, g, b);
-                    }
-                }
-                
-                positions.needsUpdate = true;
-                colors.needsUpdate = true;
-                this.waterGeometry.computeVertexNormals();
-            }
-            
-            animate() {
-                requestAnimationFrame(() => this.animate());
-                
-                // 帧率控制，限制为30fps（降低帧率减少卡顿）
-                const now = Date.now();
-                if (!this.lastFrameTime) this.lastFrameTime = now;
-                const deltaTime = now - this.lastFrameTime;
-                
-                if (deltaTime >= 33.33) { // 约30fps
-                    this.updateWater();
-                    this.updateGeometry();
-                    this.renderer.render(this.scene, this.camera);
-                    this.lastFrameTime = now;
-                }
-            }
-        }
-        
-        // 启动效果
-        window.addEventListener('load', () => {
-            new InkWaterEffect();
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <script src="script/WebGL.js"></script>
 </body>
+
 </html>
