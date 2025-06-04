@@ -15,23 +15,21 @@
     <!--    Change the index to your website's name-->
     <title>ShanghaiTech DataTech</title>
     <!-- Bootstrap Core CSS ––––––––––––––––––––––––––– -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="libs/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- fontawesome ––––––––––––––––––––––––––– -->
-    <script src="https://kit.fontawesome.com/5c9f2dfb26.js"></script>
+    <link href="libs/fontawesome/all.min.css" rel="stylesheet">
     <!-- script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
     <!-- Custom Fonts -->
     <link href="css/webfontkit-20210922-213723/stylesheet.css" rel="stylesheet">
-    <!-- To add a google font and paste the link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap" rel="stylesheet">
+    <!-- Local Google font -->
+    <link href="libs/fonts/exo2.css" rel="stylesheet">
     <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="libs/threejs/three.min.js"></script>
 
     <style>
         /* Global Styles */
+        
         body {
             margin: 0;
             padding: 0;
@@ -39,14 +37,14 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
-
+        
         p {
             margin-bottom: 1.3rem;
             font-family: nexa_regularregular;
             color: #E8E8E8;
             font-size: 1rem;
         }
-
+        
         h2 {
             font-family: 'Exo 2', sans-serif;
             margin: 1.414rem 0 0.5rem 0;
@@ -56,13 +54,13 @@
             letter-spacing: 0.05em;
             font-weight: 700;
         }
-
         /* Navbar */
+        
         #navbar {
             background-color: rgba(35, 35, 35, 0.9);
             backdrop-filter: blur(10px);
         }
-
+        
         .nav-link {
             font-family: nexa_xboldregular;
             text-transform: uppercase;
@@ -71,18 +69,18 @@
             padding-right: 2vw !important;
             color: #d8d8d8 !important;
         }
-
+        
         .nav-link:hover {
             color: #ffffff !important;
         }
-
         /* Home Section with Ink Effect */
+        
         #homeWrapper {
             height: 100vh;
             position: relative;
             overflow: hidden;
         }
-
+        
         #inkCanvas {
             position: fixed;
             top: 0;
@@ -93,7 +91,7 @@
             cursor: crosshair;
             pointer-events: auto;
         }
-
+        
         #homeContainer {
             position: relative;
             z-index: 10;
@@ -104,15 +102,15 @@
             text-align: center;
             pointer-events: none;
         }
-
+        
         #homeContainer .col-8 {
             pointer-events: auto;
         }
-
+        
         #homeContainer .btn {
             pointer-events: auto;
         }
-
+        
         .lead {
             font-family: nexa_regularregular;
             font-size: 1.25rem;
@@ -120,14 +118,14 @@
             color: #E8E8E8;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
-
+        
         .btn {
             font-family: nexa_regularregular;
             font-weight: bold;
             border-width: 2px;
         }
-
         /* About Section */
+        
         #aboutWrapper {
             background-color: rgba(35, 35, 35, 0.85);
             backdrop-filter: blur(10px);
@@ -136,8 +134,8 @@
             z-index: 5;
             pointer-events: auto;
         }
-
         /* Resources Section */
+        
         #resourcesWrapper {
             background-color: rgba(26, 26, 26, 0.85);
             backdrop-filter: blur(10px);
@@ -146,8 +144,8 @@
             z-index: 5;
             pointer-events: auto;
         }
-
         /* Contact Section */
+        
         #contactWrapper {
             background-color: rgba(35, 35, 35, 0.85);
             backdrop-filter: blur(10px);
@@ -156,27 +154,27 @@
             z-index: 5;
             pointer-events: auto;
         }
-
+        
         .footer {
             padding: 2rem 0;
         }
-
+        
         .footer .social ul li {
             display: inline-block;
         }
-
+        
         .footer .social ul li a {
             display: inline-block;
             padding: 10px;
             font-size: 2rem;
             color: #E8E8E8;
         }
-
+        
         .footer .social ul li a:hover {
             color: #ffffff;
         }
-
         /* Logo Styles */
+        
         .datatech-logo {
             font-family: single_fighterregular;
             font-size: 4rem;
@@ -184,21 +182,20 @@
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
             letter-spacing: 0.075em;
         }
-
+        
         @media (max-width: 768px) {
             .datatech-logo {
                 font-size: 2.5rem;
             }
         }
-
-
         /* Home Section with WebGL Background */
+        
         #homeWrapper {
             height: 100vh;
             position: relative;
             overflow: hidden;
         }
-
+        
         #inkCanvas {
             position: fixed;
             top: 0;
@@ -210,7 +207,7 @@
             /* 允许背景接收鼠标事件 */
             filter: invert(1);
         }
-
+        
         #homeContainer {
             position: relative;
             z-index: 10;
@@ -222,8 +219,8 @@
             pointer-events: none;
             /* 让容器本身不阻挡鼠标事件 */
         }
-
         /* 确保内容元素仍可交互 */
+        
         #homeContainer .col-8,
         #homeContainer .btn,
         #homeContainer a,
@@ -240,11 +237,9 @@
             <div class="row justify-content-lg-center">
                 <div class="col-sm-1 col-lg-1">
                     <a class="navbar-brand" href="#">
-                        <img src="./img/datatechlogo_w.svg" alt="DataTech logo" width="45">                    </a>
+                        <img src="./img/datatechlogo_w.svg" alt="DataTech logo" width="45"> </a>
                 </div>
-                <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-center col-lg-auto" id="navbarToggler">
@@ -275,8 +270,7 @@
             <div class="row justify-content-center">
                 <div class="col-8">
                     <div class="mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 720 220"
-                            style="max-width: 100%; height: auto;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 720 220" style="max-width: 100%; height: auto;">
                             <defs>
                                 <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
                                     <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.8)">
@@ -312,13 +306,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 px-5">
                     <h2>About DataTech</h2>
-                    <p>DataTech is a student organization at ShanghaiTech University dedicated to exploring the
-                        frontiers of data science and technology. We bring together passionate students who are
-                        interested in machine learning, artificial intelligence, data analysis, and cutting-edge
-                        technological innovations.</p>
-                    <p>Our mission is to foster a collaborative environment where students can learn, share knowledge,
-                        and work on exciting projects that push the boundaries of what's possible with data and
-                        technology.</p>
+                    <p>DataTech is a student organization at ShanghaiTech University dedicated to exploring the frontiers of data science and technology. We bring together passionate students who are interested in machine learning, artificial intelligence,
+                        data analysis, and cutting-edge technological innovations.</p>
+                    <p>Our mission is to foster a collaborative environment where students can learn, share knowledge, and work on exciting projects that push the boundaries of what's possible with data and technology.
+                    </p>
                 </div>
                 <div class="col-md-6 pt-5 ps-3">
                     <div class="row">
@@ -349,32 +340,28 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body">
-                            <h5 class="card-title"
-                                style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <i class="fas fa-brain me-2"></i>Machine Learning
                             </h5>
-                            <p class="card-text">Explore the latest in ML algorithms, deep learning frameworks, and AI
-                                applications.</p>
+                            <p class="card-text">Explore the latest in ML algorithms, deep learning frameworks, and AI applications.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body">
-                            <h5 class="card-title"
-                                style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <i class="fas fa-chart-bar me-2"></i>Data Analysis
                             </h5>
-                            <p class="card-text">Learn data visualization, statistical analysis, and data-driven
-                                decision making.</p>
+                            <p class="card-text">Learn data visualization, statistical analysis, and data-driven decision making.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body">
-                            <h5 class="card-title"
-                                style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <i class="fas fa-code me-2"></i>Tech Innovation
                             </h5>
                             <p class="card-text">Discover emerging technologies and participate in innovative projects.
@@ -409,9 +396,7 @@
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+    <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
 
     <script src="script/WebGL.js"></script>
 </body>
