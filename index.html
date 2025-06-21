@@ -30,35 +30,63 @@
     <style>
         /* Global Styles */
         
+         :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --text-shadow-color: rgba(0, 0, 0, 0.8);
+            --navbar-bg-color: rgba(248, 249, 250, 0.9);
+            --wrapper-bg-color: rgba(248, 249, 250, 0.85);
+            --wrapper-bg-color-2: rgba(233, 236, 239, 0.85);
+            --card-bg-color: #f8f9fa;
+            --logo-filter: none;
+            --canvas-filter: invert(1) brightness(1);
+        }
+        
+        body.day-mode {
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --text-shadow-color: rgba(0, 0, 0, 0.25);
+            --navbar-bg-color: rgba(35, 35, 35, 0.9);
+            --wrapper-bg-color: rgba(35, 35, 35, 0.85);
+            --wrapper-bg-color-2: rgba(26, 26, 26, 0.85);
+            --card-bg-color: #ffffff;
+            --logo-filter: invert(1);
+            --canvas-filter: invert(0) brightness(1);
+        }
+        
         body {
             margin: 0;
             padding: 0;
-            background: #000;
+            background: var(--background-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
+            transition: background-color 0.5s ease;
         }
         
         p {
             margin-bottom: 1.3rem;
             font-family: nexa_regularregular;
-            color: #E8E8E8;
+            color: var(--text-color);
             font-size: 1rem;
+            transition: color 0.5s ease;
         }
         
         h2 {
             font-family: 'Exo 2', sans-serif;
             margin: 1.414rem 0 0.5rem 0;
             font-size: 2.369rem;
-            color: #E8E8E8;
+            color: var(--text-color);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             font-weight: 700;
+            transition: color 0.5s ease;
         }
         /* Navbar */
         
         #navbar {
-            background-color: rgba(35, 35, 35, 0.9);
+            background-color: var(--navbar-bg-color);
             backdrop-filter: blur(10px);
+            transition: background-color 0.5s ease;
         }
         
         .nav-link {
@@ -67,11 +95,14 @@
             letter-spacing: 4pt;
             padding-left: 2vw !important;
             padding-right: 2vw !important;
-            color: #d8d8d8 !important;
+            color: var(--text-color) !important;
+            opacity: 0.8;
+            transition: color 0.5s ease;
         }
         
         .nav-link:hover {
-            color: #ffffff !important;
+            color: var(--text-color) !important;
+            opacity: 1;
         }
         /* Home Section with Ink Effect */
         
@@ -90,6 +121,8 @@
             z-index: 1;
             cursor: crosshair;
             pointer-events: auto;
+            filter: var(--canvas-filter);
+            transition: filter 0.5s ease;
         }
         
         #homeContainer {
@@ -115,8 +148,9 @@
             font-family: nexa_regularregular;
             font-size: 1.25rem;
             font-weight: 300;
-            color: #E8E8E8;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: var(--text-color);
+            text-shadow: 2px 2px 4px var(--text-shadow-color);
+            transition: color 0.5s ease;
         }
         
         .btn {
@@ -127,32 +161,35 @@
         /* About Section */
         
         #aboutWrapper {
-            background-color: rgba(35, 35, 35, 0.85);
+            background-color: var(--wrapper-bg-color);
             backdrop-filter: blur(10px);
             padding: 80px 0;
             position: relative;
             z-index: 5;
             pointer-events: auto;
+            transition: background-color 0.5s ease;
         }
         /* Resources Section */
         
         #resourcesWrapper {
-            background-color: rgba(26, 26, 26, 0.85);
+            background-color: var(--wrapper-bg-color-2);
             backdrop-filter: blur(10px);
             padding: 80px 0;
             position: relative;
             z-index: 5;
             pointer-events: auto;
+            transition: background-color 0.5s ease;
         }
         /* Contact Section */
         
         #contactWrapper {
-            background-color: rgba(35, 35, 35, 0.85);
+            background-color: var(--wrapper-bg-color);
             backdrop-filter: blur(10px);
             padding: 80px 0;
             position: relative;
             z-index: 5;
             pointer-events: auto;
+            transition: background-color 0.5s ease;
         }
         
         .footer {
@@ -167,20 +204,23 @@
             display: inline-block;
             padding: 10px;
             font-size: 2rem;
-            color: #E8E8E8;
+            color: var(--text-color);
+            transition: color 0.5s ease;
         }
         
         .footer .social ul li a:hover {
-            color: #ffffff;
+            color: var(--text-color);
+            opacity: 0.8;
         }
         /* Logo Styles */
         
         .datatech-logo {
             font-family: single_fighterregular;
             font-size: 4rem;
-            color: #E8E8E8;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            color: var(--text-color);
+            text-shadow: 3px 3px 6px var(--text-shadow-color);
             letter-spacing: 0.075em;
+            transition: color 0.5s ease;
         }
         
         @media (max-width: 768px) {
@@ -205,7 +245,7 @@
             z-index: 1;
             pointer-events: auto;
             /* 允许背景接收鼠标事件 */
-            filter: invert(1);
+            filter: var(--canvas-filter);
         }
         
         #homeContainer {
@@ -227,6 +267,24 @@
         #homeContainer svg {
             pointer-events: auto;
         }
+        
+        #theme-toggle .moon-icon {
+            display: none;
+        }
+        
+        body.day-mode #theme-toggle .sun-icon {
+            display: none;
+        }
+        
+        body.day-mode #theme-toggle .moon-icon {
+            display: inline-block;
+        }
+        
+        #theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 
@@ -237,7 +295,7 @@
             <div class="row justify-content-lg-center">
                 <div class="col-sm-1 col-lg-1">
                     <a class="navbar-brand" href="#">
-                        <img src="./img/datatechlogo_w.svg" alt="DataTech logo" width="45"> </a>
+                        <img src="./img/datatechlogo_w.svg" alt="DataTech logo" width="45" id="navbar-logo"> </a>
                 </div>
                 <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -258,7 +316,12 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-1"></div>
+                <div class="col-lg-1 d-flex align-items-center justify-content-center">
+                    <button id="theme-toggle" class="btn btn-link nav-link" style="padding: 0.5rem 1rem;">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -273,13 +336,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 720 220" style="max-width: 100%; height: auto;">
                             <defs>
                                 <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.8)">
+                                    <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="var(--text-shadow-color)">
                                     </feDropShadow>
                                 </filter>
                             </defs>
 
-                            <text id="DataTech" data-name="DataTech" fill="#e8e8e8" font-size="0"
-                                font-family="single_fighterregular" letter-spacing="0.075em" filter="url(#textShadow)">
+                            <text id="DataTech" data-name="DataTech" fill="var(--text-color)" font-size="0"
+                                font-family="single_fighterregular" letter-spacing="0.075em" filter="url(#textShadow)" style="transition: fill 0.5s ease;">
                                 <tspan x="50" y="124" font-size="200" letter-spacing="-0.02em">D</tspan>
                                 <tspan font-size="120" letter-spacing="0.12em" y="135">a</tspan>
                                 <tspan y="130" font-size="130" letter-spacing="0.0em">t</tspan>
@@ -292,7 +355,7 @@
                             </text>
                         </svg>
                     </div>
-                    <p class="lead fw-normal">Exploring Data Science and Technology at ShanghaiTech University</p>
+                    <p class="lead fw-normal">Data Science Competitions & AI Research at ShanghaiTech</p>
                     <a class="btn btn-outline-light btn-lg" href="#about">Learn More</a>
                 </div>
             </div>
@@ -314,7 +377,7 @@
                 <div class="col-md-6 pt-5 ps-3">
                     <div class="row">
                         <div class="col-4">
-                            <img class="img-fluid " src="./img/datatechlogo_w.svg" alt="white logo" width="">
+                            <img class="img-fluid " src="./img/datatechlogo_w.svg" alt="white logo" width="" id="about-logo">
                         </div>
                         <div class="col-8">
                             <img class="img-fluid " src="./img/shanghaitech-university-vector-logo.png" id="ShanghaiTech-logo" alt="ShanghaiTech logo" width="">
@@ -338,7 +401,7 @@
             </div>
             <div class="row justify-content-center mt-5">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-light h-100">
+                    <div class="card bg-dark text-light h-100" style="background-color: var(--card-bg-color) !important; transition: background-color 0.5s ease;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <i class="fas fa-brain me-2"></i>Machine Learning
@@ -349,7 +412,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-light h-100">
+                    <div class="card bg-dark text-light h-100" style="background-color: var(--card-bg-color) !important; transition: background-color 0.5s ease;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <i class="fas fa-chart-bar me-2"></i>Data Analysis
@@ -359,7 +422,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark text-light h-100">
+                    <div class="card bg-dark text-light h-100" style="background-color: var(--card-bg-color) !important; transition: background-color 0.5s ease;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
                                 <i class="fas fa-code me-2"></i>Tech Innovation
@@ -399,6 +462,7 @@
     <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
 
     <script src="script/WebGL.js"></script>
+    <script src="script/script.js"></script>
 </body>
 
 </html>
