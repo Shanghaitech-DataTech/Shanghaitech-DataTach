@@ -51,7 +51,7 @@
          body.classList.toggle('day-mode', isDay);
          if (navbarLogo) navbarLogo.src = isDay ? blackLogoSrc : whiteLogoSrc;
          if (aboutLogo) aboutLogo.src = isDay ? blackLogoSrc : whiteLogoSrc;
-         if (shanghaiTechLogo) shanghaiTechLogo.style.filter = isDay ? 'invert(1)' : 'none';
+         if (shanghaiTechLogo) shanghaiTechLogo.style.filter = isDay ? 'none' : 'invert(1)';
      }
 
      // Initial theme setup
