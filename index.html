@@ -89,6 +89,54 @@
             transition: background-color 0.5s ease;
         }
         
+        .navbar-brand {
+            position: absolute;
+            left: 20px;
+            top: 40%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .navbar-brand img {
+            width: 60px !important;
+            height: auto;
+        }
+        
+        .nav-link {
+            font-family: nexa_xboldregular;
+            text-transform: uppercase;
+            letter-spacing: 4pt;
+            padding-left: 2vw !important;
+            padding-right: 2vw !important;
+            color: var(--text-color) !important;
+            opacity: 0.8;
+            transition: color 0.5s ease;
+            min-width: 120px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            color: var(--text-color) !important;
+            opacity: 1;
+        }
+        
+        .navbar-nav {
+            margin-left: 100px;
+        }
+        
+        @media (max-width: 991px) {
+            .navbar-brand {
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+            }
+            .navbar-nav {
+                margin-left: 0;
+            }
+        }
+        
         .nav-link {
             font-family: nexa_xboldregular;
             text-transform: uppercase;
@@ -157,6 +205,18 @@
             font-family: nexa_regularregular;
             font-weight: bold;
             border-width: 2px;
+        }
+        /* Day mode button style */
+        
+        body:not(.day-mode) .btn-outline-light {
+            color: #000;
+            border-color: #000;
+        }
+        
+        body:not(.day-mode) .btn-outline-light:hover {
+            color: #fff;
+            background-color: #000;
+            border-color: #000;
         }
         /* About Section */
         
@@ -291,37 +351,39 @@
 <body>
     <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg">
-        <div class="container-fluid justify-content-lg-center" id="navbarContainer">
-            <div class="row justify-content-lg-center">
-                <div class="col-sm-1 col-lg-1">
-                    <a class="navbar-brand" href="#">
-                        <img src="./img/datatechlogo_w.svg" alt="DataTech logo" width="45" id="navbar-logo"> </a>
-                </div>
-                <button class="navbar-toggler col-sm-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <div class="container-fluid" id="navbarContainer">
+            <a class="navbar-brand" href="#">
+                <img src="./img/datatechlogo_w.svg" alt="DataTech logo" id="navbar-logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarToggler">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" data-lang="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-lang="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources" data-lang="resources">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-lang="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <button id="theme-toggle" class="btn btn-link nav-link me-2" style="padding: 0.5rem 1rem;">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center col-lg-auto" id="navbarToggler">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#resources">Resources</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-1 d-flex align-items-center justify-content-center">
-                    <button id="theme-toggle" class="btn btn-link nav-link" style="padding: 0.5rem 1rem;">
-                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </button>
-                </div>
+
+                <button id="lang-toggle" class="btn btn-link nav-link" style="padding: 0.5rem 1rem; font-family: nexa_xboldregular; min-width: 50px;">EN</button>
             </div>
         </div>
     </nav>
@@ -355,8 +417,8 @@
                             </text>
                         </svg>
                     </div>
-                    <p class="lead fw-normal">Data Science Competitions & AI Research at ShanghaiTech</p>
-                    <a class="btn btn-outline-light btn-lg" href="#about">Learn More</a>
+                    <p class="lead fw-normal" data-lang="hero_subtitle">Data Science Competitions & AI Research at ShanghaiTech</p>
+                    <a class="btn btn-outline-light btn-lg" href="#about" data-lang="learn_more">Learn More</a>
                 </div>
             </div>
         </div>
@@ -368,10 +430,10 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 px-5">
-                    <h2>About DataTech</h2>
-                    <p>DataTech is a student organization at ShanghaiTech University dedicated to exploring the frontiers of data science and technology. We bring together passionate students who are interested in machine learning, artificial intelligence,
+                    <h2 data-lang="about_title">About DataTech</h2>
+                    <p data-lang="about_p1">DataTech is a student organization at ShanghaiTech University dedicated to exploring the frontiers of data science and technology. We bring together passionate students who are interested in machine learning, artificial intelligence,
                         data analysis, and cutting-edge technological innovations.</p>
-                    <p>Our mission is to foster a collaborative environment where students can learn, share knowledge, and work on exciting projects that push the boundaries of what's possible with data and technology.
+                    <p data-lang="about_p2">Our mission is to foster a collaborative environment where students can learn, share knowledge, and work on exciting projects that push the boundaries of what's possible with data and technology.
                     </p>
                 </div>
                 <div class="col-md-6 pt-5 ps-3">
@@ -395,7 +457,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-auto">
-                    <h2>EXPLORE<br><span>OUR RESOURCES</span></h2>
+                    <h2 data-lang="resources_title">EXPLORE<br><span>OUR RESOURCES</span></h2>
                 </div>
                 <div class="col-6"></div>
             </div>
@@ -403,10 +465,10 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100" style="background-color: var(--card-bg-color) !important; transition: background-color 0.5s ease;">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;" data-lang="ml_title">
                                 <i class="fas fa-brain me-2"></i>Machine Learning
                             </h5>
-                            <p class="card-text">Explore the latest in ML algorithms, deep learning frameworks, and AI applications.
+                            <p class="card-text" data-lang="ml_p">Explore the latest in ML algorithms, deep learning frameworks, and AI applications.
                             </p>
                         </div>
                     </div>
@@ -414,20 +476,20 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100" style="background-color: var(--card-bg-color) !important; transition: background-color 0.5s ease;">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;" data-lang="da_title">
                                 <i class="fas fa-chart-bar me-2"></i>Data Analysis
                             </h5>
-                            <p class="card-text">Learn data visualization, statistical analysis, and data-driven decision making.</p>
+                            <p class="card-text" data-lang="da_p">Learn data visualization, statistical analysis, and data-driven decision making.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card bg-dark text-light h-100" style="background-color: var(--card-bg-color) !important; transition: background-color 0.5s ease;">
                         <div class="card-body">
-                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;">
+                            <h5 class="card-title" style="font-family: nexa_xboldregular; text-transform: uppercase; letter-spacing: 0.05em;" data-lang="ti_title">
                                 <i class="fas fa-code me-2"></i>Tech Innovation
                             </h5>
-                            <p class="card-text">Discover emerging technologies and participate in innovative projects.
+                            <p class="card-text" data-lang="ti_p">Discover emerging technologies and participate in innovative projects.
                             </p>
                         </div>
                     </div>
@@ -442,8 +504,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2>Get In Touch</h2>
-                    <p>Interested in joining DataTech or collaborating with us? We'd love to hear from you!</p>
+                    <h2 data-lang="contact_title">Get In Touch</h2>
+                    <p data-lang="contact_p">Interested in joining DataTech or collaborating with us? We'd love to hear from you!</p>
                     <div class="footer">
                         <div class="social">
                             <ul class="list-unstyled d-flex justify-content-center">
